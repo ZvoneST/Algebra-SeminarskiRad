@@ -1,16 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SeminarskiRad.Models;
+using SeminarskiRad.Models.ViewModels;
 
 namespace SeminarskiRad.Controllers
 {
-    public class HomeController : Controller
+    public class PredbiljezbaController : Controller
     {
+        private ApplicationDbContext _db = new ApplicationDbContext();
+
         public ActionResult Index()
         {
-            return View();
+            var predbiljezba = _db.Predbiljezba.Include(s => s.Seminar).ToList();
+
+            return View(predbiljezba);
         }
 
         public ActionResult About()
