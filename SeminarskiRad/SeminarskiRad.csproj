@@ -187,6 +187,10 @@
     <Compile Include="Migrations\202002241254279_AddSeminarDatabase.Designer.cs">
       <DependentUpon>202002241254279_AddSeminarDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002241859105_AddPredbiljezbaModelToDB.cs" />
+    <Compile Include="Migrations\202002241859105_AddPredbiljezbaModelToDB.Designer.cs">
+      <DependentUpon>202002241859105_AddPredbiljezbaModelToDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -257,9 +261,11 @@
     <Content Include="Views\Seminar\Details.cshtml" />
     <Content Include="Views\Seminar\Edit.cshtml" />
     <Content Include="Views\Seminar\Delete.cshtml" />
+    <Content Include="Views\Shared\_NavBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\ViewModels\" />
     <Folder Include="Views\Seminars\" />
     <Folder Include="Views\SemiProba\" />
   </ItemGroup>
@@ -282,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002241254279_AddSeminarDatabase.resx">
       <DependentUpon>202002241254279_AddSeminarDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002241859105_AddPredbiljezbaModelToDB.resx">
+      <DependentUpon>202002241859105_AddPredbiljezbaModelToDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

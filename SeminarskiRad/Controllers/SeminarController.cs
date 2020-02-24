@@ -13,6 +13,7 @@ namespace SeminarskiRad.Controllers
         private ApplicationDbContext _db = new ApplicationDbContext();
 
         // GET: Seminar/Index
+        [HttpGet]
         public ActionResult Index()
         {
             return View(_db.Seminar.ToList());
@@ -20,6 +21,7 @@ namespace SeminarskiRad.Controllers
 
 
         // GET: Seminar/Create
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
@@ -43,6 +45,7 @@ namespace SeminarskiRad.Controllers
 
 
         // GET: Seminar/Edit/5
+        [HttpGet]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,6 +80,7 @@ namespace SeminarskiRad.Controllers
         }
 
         // GET: Seminar/Details/5
+        [HttpGet]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -95,6 +99,7 @@ namespace SeminarskiRad.Controllers
         }
 
         // GET: Seminar/Delete/5
+        [HttpGet]
         public ActionResult Delete(int? id)
         {
             if (id == null)

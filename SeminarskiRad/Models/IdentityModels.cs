@@ -21,6 +21,7 @@ namespace SeminarskiRad.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Seminar> Seminar { get; set; }
+        public DbSet<Predbiljezba> Predbiljezba { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
