@@ -12,22 +12,23 @@ namespace SeminarskiRad.Models
         public int IdSeminar { get; set; }
 
         [Required(ErrorMessage = "Naziva seminara je obavezan!")]
-        [Display(Name = "Naziv seminara: ")]
+        [Display(Name = "Naziv seminara")]
         public string Naziv { get; set; }
 
         [Required(ErrorMessage = "Opis seminara je obavezan!")]
-        [Display(Name = "Opis seminara: ")]
+        [Display(Name = "Opis seminara")]
         public string Opis { get; set; }
 
         [Required(ErrorMessage = "Unos datuma početka seminara je obavezan!")]
-        [Display(Name = "Početak seminara: ")]
+        [Display(Name = "Početak seminara")]
         [DataType(DataType.Date)]
         public DateTime Datum { get; set; }
 
         [Required(ErrorMessage = "Unos broja polaznika je obavezan!")]
-        [Display(Name = "Broj polaznika: ")]
+        [Display(Name = "Broj polaznika")]
         public int BrojPolaznika { get; set; }
 
+        [Display(Name = "Popunjen")]
         public bool Popunjen { get; set; }
     }
 }

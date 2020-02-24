@@ -1,0 +1,59 @@
+﻿@model SeminarskiRad.Models.Seminar
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Seminar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Naziv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Datum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Datum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojPolaznika)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojPolaznika)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Popunjen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Popunjen)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdSeminar }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

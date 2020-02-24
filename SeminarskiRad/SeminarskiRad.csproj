@@ -175,12 +175,17 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SeminarController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202002232005544_InitialMigration.cs" />
     <Compile Include="Migrations\202002232005544_InitialMigration.Designer.cs">
       <DependentUpon>202002232005544_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002241254279_AddSeminarDatabase.cs" />
+    <Compile Include="Migrations\202002241254279_AddSeminarDatabase.Designer.cs">
+      <DependentUpon>202002241254279_AddSeminarDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -247,9 +252,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Seminar\Index.cshtml" />
+    <Content Include="Views\Seminar\Create.cshtml" />
+    <Content Include="Views\Seminar\Details.cshtml" />
+    <Content Include="Views\Seminar\Edit.cshtml" />
+    <Content Include="Views\Seminar\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Seminars\" />
+    <Folder Include="Views\SemiProba\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -267,6 +279,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202002232005544_InitialMigration.resx">
       <DependentUpon>202002232005544_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002241254279_AddSeminarDatabase.resx">
+      <DependentUpon>202002241254279_AddSeminarDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
