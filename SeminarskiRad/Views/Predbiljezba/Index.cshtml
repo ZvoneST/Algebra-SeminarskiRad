@@ -10,9 +10,7 @@
 
 <table class="table">
     <tr>
-        <th>
-
-        </th>
+        <th></th>
         <th>
             @Html.DisplayNameFor(model => model.Naziv)
         </th>
@@ -30,7 +28,9 @@
     {
 
         <tr>
-            <td>@Html.ActionLink("Odaberi", "Create")</td>
+            <td>
+                @Html.ActionLink("Odaberi", "UpisPolaznika", new { id = item.IdSeminar })
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Naziv)
             </td>

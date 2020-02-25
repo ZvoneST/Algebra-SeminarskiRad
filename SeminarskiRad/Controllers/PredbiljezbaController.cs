@@ -18,8 +18,7 @@ namespace SeminarskiRad.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var seminariPonuda = from s in _db.Seminar
-                                 select s;
+            var seminariPonuda = _db.Seminar.ToList();
 
             return View(seminariPonuda);
         }
@@ -33,17 +32,56 @@ namespace SeminarskiRad.Controllers
             return View(predbiljezba);
         }
 
-        [HttpPost, ActionName("Predbiljezbe")]
-        public ActionResult PrijavaPolaznika()
+        [HttpGet]
+        public ActionResult UpisPolaznika(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
+            UpisViewModel upisPolaznika = new UpisViewModel()
+            {
+                IdSeminar = _db.Seminar.Find(id).IdSeminar,
+                NazivSeminara = _db.Seminar.Find(id).Naziv,
+                OpisSeminara = _db.Seminar.Find(id).Opis,
+                PocetakSeminara = _db.Seminar.Find(id).Datum
+            };
+
+            if (upisPolaznika == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(upisPolaznika);
         }
 
-        public ActionResult Contact()
+        [HttpPost, ActionName("UpisPolaznika")]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpisPolaznikaPotvrda(UpisViewModel upis)
         {
-            ViewBag.Message = "Your contact page.";
+            if (ModelState.IsValid)
+            {
+                Predbiljezba upisPolaznika = new Predbiljezba()
+                {
+                    IdSeminar = upis.IdSeminar,
+                    Datum = DateTime.Now,
+                    Ime = upis.Ime,
+                    Prezime = upis.Prezime,
+                    Adresa = upis.Adresa,
+                    Email = upis.Email,
+                    Telefon = upis.Telefon,
+                    StatusPrijave = upis.Status
+                };
 
-            return View();
+                _db.Predbiljezba.Add(upisPolaznika);
+                _db.SaveChanges();
+
+                return RedirectToAction(nameof(Index));
+
+            }
+
+            return View(upis);
         }
     }
 }

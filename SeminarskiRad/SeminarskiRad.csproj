@@ -197,7 +197,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Predbiljezba.cs" />
     <Compile Include="Models\Seminar.cs" />
-    <Compile Include="Models\ViewModels\PredbiljezbaViewModel.cs" />
+    <Compile Include="Models\ViewModels\UpisViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -265,6 +265,7 @@
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Predbiljezba\Predbiljezbe.cshtml" />
     <Content Include="Views\Predbiljezba\Index.cshtml" />
+    <Content Include="Views\Predbiljezba\UpisPolaznika.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

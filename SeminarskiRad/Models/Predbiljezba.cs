@@ -7,6 +7,7 @@ using System.Web;
 
 namespace SeminarskiRad.Models
 {
+    [Table("Predbiljezbas")]
     public class Predbiljezba
     {
         [Key]
@@ -29,6 +30,7 @@ namespace SeminarskiRad.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+        [Display(Name ="Tel/Mob")]
         public string Telefon { get; set; }
 
         [ForeignKey("Seminar")]

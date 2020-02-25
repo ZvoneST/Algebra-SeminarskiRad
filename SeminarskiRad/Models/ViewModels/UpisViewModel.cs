@@ -1,13 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using static SeminarskiRad.Models.Predbiljezba;
 
 namespace SeminarskiRad.Models.ViewModels
 {
     public class UpisViewModel
     {
-        public List<Seminar> Seminar { get; set; }
-        public List<Predbiljezba> Predbiljezba { get; set; }
+        public int IdSeminar { get; set; }
+        [Display(Name = "Seminar")]
+        public string NazivSeminara { get; set; }
+        public string OpisSeminara { get; set; }
+        public DateTime PocetakSeminara { get; set; }
+        
+        [Required(ErrorMessage ="Unos imena je obavezan")]
+        public string Ime { get; set; }
+        
+        [Required(ErrorMessage = "Unos prezimena je obavezan")]
+        public string Prezime { get; set; }
+
+        [Required(ErrorMessage = "Unos adrese je obavezan")]
+        public string Adresa { get; set; }
+
+        [Required(ErrorMessage = "Unos e-mail adrese je obavezan")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "Unos broja telefona/mobitela je obavezan")]
+        public string Telefon { get; set; }
+        public Status Status { get; set; }
     }
 }
