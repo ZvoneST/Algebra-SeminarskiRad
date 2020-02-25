@@ -13,17 +13,29 @@ namespace SeminarskiRad.Controllers
     {
         private ApplicationDbContext _db = new ApplicationDbContext();
 
+        
+        // Početna - Ponuda seminara
+        [HttpGet]
         public ActionResult Index()
+        {
+            var seminariPonuda = from s in _db.Seminar
+                                 select s;
+
+            return View(seminariPonuda);
+        }
+        
+        // Pregled predbilježbi
+        [HttpGet]
+        public ActionResult Predbiljezbe()
         {
             var predbiljezba = _db.Predbiljezba.Include(s => s.Seminar).ToList();
 
             return View(predbiljezba);
         }
 
-        public ActionResult About()
+        [HttpPost, ActionName("Predbiljezbe")]
+        public ActionResult PrijavaPolaznika()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
