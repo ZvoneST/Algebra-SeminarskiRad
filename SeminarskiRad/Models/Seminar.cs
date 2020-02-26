@@ -23,8 +23,7 @@ namespace SeminarskiRad.Models
 
         [Required(ErrorMessage = "Unos datuma početka seminara je obavezan!")]
         [Display(Name = "Početak seminara")]
-        [DataType(DataType.Date)]
-        public DateTime Datum { get; set; }
+        public DateTime? Datum { get; set; }
 
         [Required(ErrorMessage = "Unos broja polaznika je obavezan!")]
         [Display(Name = "Broj polaznika")]

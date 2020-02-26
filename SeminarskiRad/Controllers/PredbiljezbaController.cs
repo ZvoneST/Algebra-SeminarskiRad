@@ -73,7 +73,7 @@ namespace SeminarskiRad.Controllers
                     Adresa = upis.Adresa,
                     Email = upis.Email,
                     Telefon = upis.Telefon,
-                    StatusPrijave = upis.Status
+                    StatusPrijave = upis.StatusPrijave
                 };
 
                 _db.Predbiljezba.Add(upisPolaznika);
@@ -95,38 +95,58 @@ namespace SeminarskiRad.Controllers
                 return HttpNotFound();
             }
 
-            var predbiljezba = _db.Predbiljezba.Include(s => s.Seminar).SingleOrDefault(p => p.IdPredbiljezba == id);
+            var predbiljezba = _db.Predbiljezba.Include(s => s.Seminar).FirstOrDefault(p => p.IdPredbiljezba == id);
 
-            if (predbiljezba == null)
+            UpisEdit upisEdit = new UpisEdit()
+            {
+                IdSeminar = predbiljezba.IdSeminar,
+                NazivSeminara = predbiljezba.Seminar.Naziv,
+                IdPredbiljezba = predbiljezba.IdPredbiljezba,
+                Ime = predbiljezba.Ime,
+                Prezime = predbiljezba.Prezime,
+                DatumUpisa = predbiljezba.Datum,
+                Adresa = predbiljezba.Adresa,
+                Email = predbiljezba.Email,
+                Telefon = predbiljezba.Telefon,
+                StatusPrijave = predbiljezba.StatusPrijave
+            };
+
+            if (upisEdit == null)
             {
                 return HttpNotFound();
             }
 
-            return View(predbiljezba);
+            return View(upisEdit);
         }
 
         // POST Spremanje izmijenjene predbilježbe
         [HttpPost, ActionName("Uredi")]
         [ValidateAntiForgeryToken]
-        public ActionResult SpremiUredeno(UpisViewModel upisModel)
+        public ActionResult SpremiUredeno(UpisEdit upisModel)
         {
-            Predbiljezba uredenUpis = new Predbiljezba()
+            if (ModelState.IsValid)
             {
-                IdSeminar = upisModel.IdSeminar,
-                Ime = upisModel.Ime,
-                Prezime = upisModel.Prezime,
-                Adresa = upisModel.Adresa,
-                Email = upisModel.Email,
-                Telefon = upisModel.Telefon,
-                StatusPrijave = upisModel.Status
-            };
+                var editUpis = _db.Predbiljezba.Include(s => s.Seminar).Where(p => p.IdPredbiljezba == upisModel.IdPredbiljezba).FirstOrDefault();
 
-            _db.SaveChanges();
+                editUpis.IdPredbiljezba = upisModel.IdPredbiljezba;
+                editUpis.Datum = upisModel.DatumUpisa;
+                editUpis.IdSeminar = upisModel.IdSeminar;
+                editUpis.Ime = upisModel.Ime;
+                editUpis.Prezime = upisModel.Prezime;
+                editUpis.Adresa = upisModel.Adresa;
+                editUpis.Email = upisModel.Email;
+                editUpis.Telefon = upisModel.Telefon;
+                editUpis.StatusPrijave = upisModel.StatusPrijave;
 
-            return RedirectToAction(nameof(Predbiljezbe));
+                _db.SaveChanges();
+
+                return RedirectToAction(nameof(Predbiljezbe));                
+            }
+
+            return View(upisModel);
+
         }
 
-        
         // GET Detalji predbilježbe
         [HttpGet]
         public ActionResult Detalji(int? id)
@@ -144,6 +164,52 @@ namespace SeminarskiRad.Controllers
             }
 
             return View(predbiljezba);
+        }
+
+        // GET brisanje predbilježbe
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
+            var predbiljezba = _db.Predbiljezba.Include(s => s.Seminar).FirstOrDefault(p => p.IdPredbiljezba == id);
+
+            UpisEdit upisEdit = new UpisEdit()
+            {
+                IdSeminar = predbiljezba.IdSeminar,
+                NazivSeminara = predbiljezba.Seminar.Naziv,
+                IdPredbiljezba = predbiljezba.IdPredbiljezba,
+                Ime = predbiljezba.Ime,
+                Prezime = predbiljezba.Prezime,
+                DatumUpisa = predbiljezba.Datum,
+                Adresa = predbiljezba.Adresa,
+                Email = predbiljezba.Email,
+                Telefon = predbiljezba.Telefon,
+                StatusPrijave = predbiljezba.StatusPrijave
+            };
+
+            if (upisEdit == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(upisEdit);
+        }
+
+        // POST brisanje predbilježbe
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Predbiljezba predbiljezba = _db.Predbiljezba.Find(id);
+
+            _db.Predbiljezba.Remove(predbiljezba);
+            _db.SaveChanges();
+
+            return RedirectToAction(nameof(Predbiljezbe));
         }
     }
 }

@@ -191,12 +191,17 @@
     <Compile Include="Migrations\202002241859105_AddPredbiljezbaModelToDB.Designer.cs">
       <DependentUpon>202002241859105_AddPredbiljezbaModelToDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002262119527_AddNullableDateTime.cs" />
+    <Compile Include="Migrations\202002262119527_AddNullableDateTime.Designer.cs">
+      <DependentUpon>202002262119527_AddNullableDateTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Predbiljezba.cs" />
     <Compile Include="Models\Seminar.cs" />
+    <Compile Include="Models\ViewModels\UpisEdit.cs" />
     <Compile Include="Models\ViewModels\UpisViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -268,6 +273,7 @@
     <Content Include="Views\Predbiljezba\UpisPolaznika.cshtml" />
     <Content Include="Views\Predbiljezba\Detalji.cshtml" />
     <Content Include="Views\Predbiljezba\Uredi.cshtml" />
+    <Content Include="Views\Predbiljezba\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -294,6 +300,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002241859105_AddPredbiljezbaModelToDB.resx">
       <DependentUpon>202002241859105_AddPredbiljezbaModelToDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002262119527_AddNullableDateTime.resx">
+      <DependentUpon>202002262119527_AddNullableDateTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

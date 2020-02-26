@@ -7,31 +7,20 @@ using static SeminarskiRad.Models.Predbiljezba;
 
 namespace SeminarskiRad.Models.ViewModels
 {
-    public class UpisViewModel
+    public class UpisEdit
     {
         public int IdSeminar { get; set; }
-        [Display(Name = "Seminar")]
         public string NazivSeminara { get; set; }
-        public string OpisSeminara { get; set; }
-        public DateTime? PocetakSeminara { get; set; }
-        
-        [Required(ErrorMessage ="Unos imena je obavezan")]
+        public int IdPredbiljezba { get; set; }
+        public DateTime? DatumUpisa { get; set; }
         public string Ime { get; set; }
-        
-        [Required(ErrorMessage = "Unos prezimena je obavezan")]
         public string Prezime { get; set; }
-
-        [Required(ErrorMessage = "Unos adrese je obavezan")]
         public string Adresa { get; set; }
-
-        [Required(ErrorMessage = "Unos e-mail adrese je obavezan")]
         public string Email { get; set; }
-
-        [Required(ErrorMessage = "Unos broja telefona/mobitela je obavezan")]
         public string Telefon { get; set; }
-        
+
         [Display(Name = "Status Prijave")]
         public Status StatusPrijave { get; set; }
-
+        // public DateTime Datum { get; internal set; }
     }
 }

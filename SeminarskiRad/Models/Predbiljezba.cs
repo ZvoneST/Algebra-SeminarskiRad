@@ -14,8 +14,7 @@ namespace SeminarskiRad.Models
         public int IdPredbiljezba { get; set; }
 
         [Display(Name = "Datum prijave")]
-        [DataType(DataType.Date)]
-        public DateTime Datum { get; set; }
+        public DateTime? Datum { get; set; }
 
         [Required(ErrorMessage = "Obavezan unos imena")]
         public string Ime { get; set; }
