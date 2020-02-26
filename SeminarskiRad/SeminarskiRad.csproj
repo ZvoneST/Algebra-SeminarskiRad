@@ -266,6 +266,8 @@
     <Content Include="Views\Predbiljezba\Predbiljezbe.cshtml" />
     <Content Include="Views\Predbiljezba\Index.cshtml" />
     <Content Include="Views\Predbiljezba\UpisPolaznika.cshtml" />
+    <Content Include="Views\Predbiljezba\Detalji.cshtml" />
+    <Content Include="Views\Predbiljezba\Uredi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
