@@ -1,0 +1,18 @@
+﻿@using (Html.BeginForm("Index", "Predbiljezba", FormMethod.Get, new { @class = "form-inline" }))
+{
+    <div class="form-group mr-label">
+        @Html.Label("Pretraživanje po:", htmlAttributes: new { @class = "control-label search-text" }) 
+        @Html.RadioButton("opcija", "Naziv") <text class="text-justify">Nazivu seminara</text>
+        @Html.RadioButton("opcija", "Opis") <text>Opisu seminara</text>
+    </div><br /><br />
+    <div class="form-group mr-right">
+        <input type="text" name="pretraga" placeholder="Pretraži seminar..." class="form-control search-box" />
+    </div>
+
+    <div class="form-group mr-right">
+        <input type="submit" value="Pretraži" class="btn btn-default" />
+    </div>
+    <div class="form-inline"></div>
+
+}
+

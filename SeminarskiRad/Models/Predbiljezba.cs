@@ -27,9 +27,11 @@ namespace SeminarskiRad.Models
 
         [Required(ErrorMessage = "Obavezan unos e-mail adrese polaznika")]
         [DataType(DataType.EmailAddress)]
+        [Display(Name = "E-mail")]
         public string Email { get; set; }
 
         [Display(Name ="Tel/Mob")]
+        [DataType(DataType.PhoneNumber)]
         public string Telefon { get; set; }
 
         [ForeignKey("Seminar")]
@@ -42,13 +44,10 @@ namespace SeminarskiRad.Models
 
         public enum Status
         {
-            [Display(Name = "Neobrađena prijava")]
             neobrađena = 0,
 
-            [Display(Name = "Prihvaćena prijava")]
-            prihvacena = 1,
+            prihvaćena = 1,
 
-            [Display(Name = "Odbijena prijava")]
             odbijena = 2
 
         }

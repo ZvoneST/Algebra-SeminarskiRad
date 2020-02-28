@@ -16,11 +16,20 @@ namespace SeminarskiRad.Controllers
         
         // GET Početna - Ponuda seminara
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string opcija, string pretraga)
         {
-            var seminariPonuda = _db.Seminar.ToList();
-
-            return View(seminariPonuda);
+            if (opcija == "Naziv")
+            {
+                return View(_db.Seminar.Where(n => n.Naziv.Contains(pretraga) || pretraga == null).ToList());
+            }
+            else if (opcija == "Opis")
+            {
+                return View(_db.Seminar.Where(o => o.Opis.Contains(pretraga) || pretraga == null).ToList());
+            }
+            else
+            {
+                return View(_db.Seminar.ToList());
+            }
         }
         
         // GET Pregled predbilježbi

@@ -279,6 +279,10 @@
     <Content Include="Views\Predbiljezba\Detalji.cshtml" />
     <Content Include="Views\Predbiljezba\Uredi.cshtml" />
     <Content Include="Views\Predbiljezba\Delete.cshtml" />
+    <Content Include="Views\Shared\_SeminarSearch.cshtml" />
+    <Content Include="Views\Shared\_PonudaSearch.cshtml" />
+    <Content Include="Views\Shared\_NavBarUser.cshtml" />
+    <Content Include="Views\Shared\_PredbiljezbaSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

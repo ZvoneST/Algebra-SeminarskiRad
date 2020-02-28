@@ -6,10 +6,14 @@
 }
 
 <h2 class="text-center">Seminari</h2>
-
+<hr />
+@Html.Partial("_SeminarSearch")
+<hr />
 <p>
-    @Html.ActionLink("Novi seminar", "Create")
+
+   @Html.ActionLink("Novi seminar", "Create", new { type = "button", @class = "btn btn-primary" })
 </p>
+<br />
 <table class="table">
     <tr>
         <th>
