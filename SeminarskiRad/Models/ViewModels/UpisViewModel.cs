@@ -13,7 +13,7 @@ namespace SeminarskiRad.Models.ViewModels
         [Display(Name = "Seminar")]
         public string NazivSeminara { get; set; }
         public string OpisSeminara { get; set; }
-        public DateTime? PocetakSeminara { get; set; }
+        public DateTime PocetakSeminara { get; set; }
         
         [Required(ErrorMessage ="Unos imena je obavezan")]
         public string Ime { get; set; }

@@ -5,10 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Detalji</h2>
+<h3>Detalji predbilježbe</h3>
 
 <div>
-    <h4>Predbiljezba</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -79,5 +78,5 @@
 </div>
 <p>
     @Html.ActionLink("Uredi", "Uredi", new { id = Model.IdPredbiljezba }) |
-    @Html.ActionLink("Natrag", "Index")
+    @Html.ActionLink("Natrag", "Predbiljezbe")
 </p>

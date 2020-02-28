@@ -24,14 +24,17 @@
 
         <h3>@Convert.ToString(string.Format(Model.NazivSeminara))</h3>
         @Html.HiddenFor(model => model.IdSeminar)
+
+        <h4>Datum predbilježbe polaznika: @Convert.ToString((DateTime)Model.DatumUpisa)</h4>
+        @Html.HiddenFor(model => model.IdPredbiljezba)
         
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.DatumUpisa, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextBoxFor(model => model.DatumUpisa, new { @class = "form-control", @disabled = "disabled" })
                 @Html.ValidationMessageFor(model => model.DatumUpisa, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
         <div class="form-group">
             @Html.LabelFor(model => model.Ime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -89,7 +92,7 @@
 }
 
 <div>
-    @Html.ActionLink("Natrag", "Index")
+    @Html.ActionLink("Natrag", "Predbiljezbe")
 </div>
 
 @section Scripts {

@@ -129,7 +129,6 @@ namespace SeminarskiRad.Controllers
                 var editUpis = _db.Predbiljezba.Include(s => s.Seminar).Where(p => p.IdPredbiljezba == upisModel.IdPredbiljezba).FirstOrDefault();
 
                 editUpis.IdPredbiljezba = upisModel.IdPredbiljezba;
-                editUpis.Datum = upisModel.DatumUpisa;
                 editUpis.IdSeminar = upisModel.IdSeminar;
                 editUpis.Ime = upisModel.Ime;
                 editUpis.Prezime = upisModel.Prezime;

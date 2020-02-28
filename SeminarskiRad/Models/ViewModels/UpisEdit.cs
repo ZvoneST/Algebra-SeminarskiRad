@@ -12,7 +12,7 @@ namespace SeminarskiRad.Models.ViewModels
         public int IdSeminar { get; set; }
         public string NazivSeminara { get; set; }
         public int IdPredbiljezba { get; set; }
-        public DateTime? DatumUpisa { get; set; }
+        public DateTime DatumUpisa { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public string Adresa { get; set; }
