@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -40,6 +41,7 @@ namespace SeminarskiRad.Controllers
         }
 
         // POST: Seminar/Create
+        [HandleError]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Seminar seminar)
@@ -62,7 +64,7 @@ namespace SeminarskiRad.Controllers
         {
             if (id == null)
             {
-                return HttpNotFound();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
             Seminar seminar = _db.Seminar.Find(id);
@@ -76,6 +78,7 @@ namespace SeminarskiRad.Controllers
         }
 
         // POST: Seminar/Edit/5
+        [HandleError]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Seminar seminar)
@@ -97,7 +100,7 @@ namespace SeminarskiRad.Controllers
         {
             if (id == null)
             {
-                return HttpNotFound();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
             var seminar = _db.Seminar.Find(id);
@@ -116,7 +119,7 @@ namespace SeminarskiRad.Controllers
         {
             if (id == null)
             {
-                return HttpNotFound();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
             var seminar = _db.Seminar.Find(id);
@@ -130,6 +133,7 @@ namespace SeminarskiRad.Controllers
         }
 
         // POST: Seminar/Delete/5
+        [HandleError]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SeminarskiRad.Models;
@@ -47,7 +48,7 @@ namespace SeminarskiRad.Controllers
         {
             if (id == null)
             {
-                return HttpNotFound();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
             UpisViewModel upisPolaznika = new UpisViewModel()
@@ -67,6 +68,7 @@ namespace SeminarskiRad.Controllers
         }
 
         //POST Upis polaznika
+        [HandleError]
         [HttpPost, ActionName("UpisPolaznika")]
         [ValidateAntiForgeryToken]
         public ActionResult UpisPolaznikaPotvrda(UpisViewModel upis)
@@ -101,7 +103,7 @@ namespace SeminarskiRad.Controllers
         {
             if (id == null)
             {
-                return HttpNotFound();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
             var predbiljezba = _db.Predbiljezba.Include(s => s.Seminar).FirstOrDefault(p => p.IdPredbiljezba == id);
@@ -129,6 +131,7 @@ namespace SeminarskiRad.Controllers
         }
 
         // POST Spremanje izmijenjene predbilježbe
+        [HandleError]
         [HttpPost, ActionName("Uredi")]
         [ValidateAntiForgeryToken]
         public ActionResult SpremiUredeno(UpisEdit upisModel)
@@ -161,7 +164,7 @@ namespace SeminarskiRad.Controllers
         {
             if (id == null)
             {
-                return HttpNotFound();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
             var predbiljezba = _db.Predbiljezba.Include(s => s.Seminar).SingleOrDefault(p => p.IdPredbiljezba == id);
@@ -180,7 +183,7 @@ namespace SeminarskiRad.Controllers
         {
             if (id == null)
             {
-                return HttpNotFound();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
             var predbiljezba = _db.Predbiljezba.Include(s => s.Seminar).FirstOrDefault(p => p.IdPredbiljezba == id);
@@ -208,6 +211,7 @@ namespace SeminarskiRad.Controllers
         }
 
         // POST brisanje predbilježbe
+        [HandleError]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -218,6 +222,15 @@ namespace SeminarskiRad.Controllers
             _db.SaveChanges();
 
             return RedirectToAction(nameof(Predbiljezbe));
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }
