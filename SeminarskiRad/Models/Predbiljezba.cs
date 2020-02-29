@@ -14,6 +14,7 @@ namespace SeminarskiRad.Models
         public int IdPredbiljezba { get; set; }
 
         [Display(Name = "Datum prijave")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime Datum { get; set; }
 
         [Required(ErrorMessage = "Obavezan unos imena")]
@@ -44,11 +45,11 @@ namespace SeminarskiRad.Models
 
         public enum Status
         {
-            neobrađena = 0,
+            Neobrađena = 0,
 
-            prihvaćena = 1,
+            Prihvaćena = 1,
 
-            odbijena = 2
+            Odbijena = 2
 
         }
     }

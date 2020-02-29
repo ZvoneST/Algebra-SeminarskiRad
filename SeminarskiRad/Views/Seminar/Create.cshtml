@@ -35,7 +35,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Datum, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Datum, new { htmlAttributes = new { @class = "form-control"} })
+                @Html.EditorFor(model => model.Datum, new { htmlAttributes = new { @class = "form-control datepicker" } })
                 @Html.ValidationMessageFor(model => model.Datum, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -70,6 +70,24 @@
     @Html.ActionLink("Natrag", "Index")
 </div>
 
+@* date picker prema uputama na linku uz prilagodbe https://www.c-sharpcorner.com/UploadFile/ee01e6/how-to-add-jquery-datepicker-in-mvc/ *@
+
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Styles.Render("~/Content/cssjqryUi")
+
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "dd-mm-yy",
+
+            }).datepicker("setDate", "1");;
+
+        });
+    </script>
+
 }

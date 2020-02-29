@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using SeminarskiRad.Models.ViewModels;
+using PagedList;
 
 namespace SeminarskiRad.Controllers
 {
@@ -15,19 +17,19 @@ namespace SeminarskiRad.Controllers
 
         // GET: Seminar/Index
         [HttpGet]
-        public ActionResult Index(string opcija, string pretraga)
+        public ActionResult Index(string opcija, string pretraga, int? pageNumber)
         {
             if (opcija == "Naziv")
             {
-                return View(_db.Seminar.Where(n => n.Naziv.Contains(pretraga) || pretraga == null).ToList());
+                return View(_db.Seminar.Where(n => n.Naziv.Contains(pretraga) || pretraga == null).ToList().ToPagedList(pageNumber ?? 1, 3));
             }
             else if (opcija == "Opis")
             {
-                return View(_db.Seminar.Where(o => o.Opis.Contains(pretraga) || pretraga == null).ToList());
+                return View(_db.Seminar.Where(o => o.Opis.Contains(pretraga) || pretraga == null).ToList().ToPagedList(pageNumber ?? 1, 3));
             }
             else
             {
-                return View(_db.Seminar.ToList());
+                return View(_db.Seminar.ToList().ToPagedList(pageNumber ?? 1, 3));
             }
 
         }
@@ -41,7 +43,7 @@ namespace SeminarskiRad.Controllers
         }
 
         // POST: Seminar/Create
-        [HandleError]
+        //[HandleError]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Seminar seminar)
@@ -78,7 +80,7 @@ namespace SeminarskiRad.Controllers
         }
 
         // POST: Seminar/Edit/5
-        [HandleError]
+        //[HandleError]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Seminar seminar)
@@ -133,7 +135,7 @@ namespace SeminarskiRad.Controllers
         }
 
         // POST: Seminar/Delete/5
-        [HandleError]
+        //[HandleError]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

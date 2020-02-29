@@ -13,6 +13,8 @@ namespace SeminarskiRad.Models.ViewModels
         [Display(Name = "Seminar")]
         public string NazivSeminara { get; set; }
         public string OpisSeminara { get; set; }
+
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime PocetakSeminara { get; set; }
         
         [Required(ErrorMessage ="Unos imena je obavezan")]

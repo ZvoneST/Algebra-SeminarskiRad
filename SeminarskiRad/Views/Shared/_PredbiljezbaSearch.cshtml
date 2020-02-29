@@ -2,13 +2,12 @@
 @using (Html.BeginForm("Predbiljezbe", "Predbiljezba", FormMethod.Get, new { @class = "form-inline" }))
 {
     <div class="form-group mr-label">
-        @Html.Label("Pretraživanje po:", htmlAttributes: new { @class = "control-label search-text" })
-        @Html.RadioButton("opcija", "Naziv") <text class="text-justify">Nazivu seminara</text>
-        @Html.RadioButton("opcija", "Opis") <text>Statusu prijave</text>
+        @Html.Label("Pretraživanje po statusu:", htmlAttributes: new { @class = "control-label search-text" })
     </div>
     <br />
     <br />
     <div class="form-group mr-right">
+        @Html.DropDownList((string)Model.s)
         <input type="text" name="pretraga" placeholder="Pretraži seminar..." class="form-control search-box" />
     </div>
 

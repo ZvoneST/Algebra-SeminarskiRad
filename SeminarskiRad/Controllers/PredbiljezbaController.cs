@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using SeminarskiRad.Models;
 using SeminarskiRad.Models.ViewModels;
 
@@ -17,19 +18,19 @@ namespace SeminarskiRad.Controllers
         
         // GET Početna - Ponuda seminara
         [HttpGet]
-        public ActionResult Index(string opcija, string pretraga)
+        public ActionResult Index(string opcija, string pretraga, int? pageNumber)
         {
             if (opcija == "Naziv")
             {
-                return View(_db.Seminar.Where(n => n.Naziv.Contains(pretraga) || pretraga == null).ToList());
+                return View(_db.Seminar.Where(n => n.Naziv.Contains(pretraga) || pretraga == null).ToList().ToPagedList(pageNumber ?? 1, 4));
             }
             else if (opcija == "Opis")
             {
-                return View(_db.Seminar.Where(o => o.Opis.Contains(pretraga) || pretraga == null).ToList());
+                return View(_db.Seminar.Where(o => o.Opis.Contains(pretraga) || pretraga == null).ToList().ToPagedList(pageNumber ?? 1, 4));
             }
             else
             {
-                return View(_db.Seminar.ToList());
+                return View(_db.Seminar.ToList().ToPagedList(pageNumber ?? 1, 4));
             }
         }
         
@@ -68,7 +69,7 @@ namespace SeminarskiRad.Controllers
         }
 
         //POST Upis polaznika
-        [HandleError]
+        //[HandleError]
         [HttpPost, ActionName("UpisPolaznika")]
         [ValidateAntiForgeryToken]
         public ActionResult UpisPolaznikaPotvrda(UpisViewModel upis)
@@ -131,7 +132,7 @@ namespace SeminarskiRad.Controllers
         }
 
         // POST Spremanje izmijenjene predbilježbe
-        [HandleError]
+        //[HandleError]
         [HttpPost, ActionName("Uredi")]
         [ValidateAntiForgeryToken]
         public ActionResult SpremiUredeno(UpisEdit upisModel)
@@ -211,7 +212,7 @@ namespace SeminarskiRad.Controllers
         }
 
         // POST brisanje predbilježbe
-        [HandleError]
+        //[HandleError]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
