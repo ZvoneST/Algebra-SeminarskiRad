@@ -5,14 +5,16 @@
 @using PagedList.Mvc;
 
 @{
-    ViewBag.Title = "Upisi";
+    ViewBag.Title = "Upiši seminar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2 class="text-center">Ponuda seminara</h2>
 
+<hr />
+@Html.Partial("_PonudaSearch")
+<br />
 <table class="table">
-    @Html.PagedListPager(Model, pageNumber => Url.Action("Index", new { pageNumber, opcija = Request.QueryString["opcija"], pretraga = Request.QueryString["pretraga"] }))
     <tr>
         <th></th>
         <th>
@@ -30,7 +32,7 @@
         <tr>
             <td colspan="4" class="text-center">
                 <br />
-                <h3><b>Traženi pojam nije pronađen</b></h3>
+                <h3><b>Traženi unos nije pronađen</b></h3>
             </td>
         </tr>
     }
@@ -47,7 +49,7 @@
                         @Html.ActionLink("Odaberi", "UpisPolaznika", new { id = item.IdSeminar })
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Naziv)
+                        <b>@Html.DisplayFor(modelItem => item.Naziv)</b>
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Opis)
@@ -62,6 +64,8 @@
     }
 
 </table>
-<hr />
-    @Html.Partial("_PonudaSearch")
-<hr />
+
+<div class="pagination" style="margin-left">
+    @Html.PagedListPager(Model, pageNumber => Url.Action("Index", new { pageNumber, opcija = Request.QueryString["opcija"], pretraga = Request.QueryString["pretraga"] }))
+</div>
+

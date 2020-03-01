@@ -36,11 +36,14 @@ namespace SeminarskiRad.Controllers
         
         // GET Pregled predbilježbi
         [HttpGet]
-        public ActionResult Predbiljezbe()
+        public ActionResult Predbiljezbe(string opcija, string pretraga)
         {
-            var predbiljezba = _db.Predbiljezba.Include(s => s.Seminar).ToList();
+            if (opcija == "Naziv")
+            {
+                return View(_db.Predbiljezba.Include(s => s.Seminar).Where(n => n.Seminar.Naziv.Contains(pretraga) || pretraga == null).ToList());
 
-            return View(predbiljezba);
+            }
+            return View(_db.Predbiljezba.Include(s => s.Seminar).Where(i => i.Ime.Contains(pretraga) || i.Prezime.Contains(pretraga) || pretraga == null).ToList());
         }
 
         // GET Upis polanika
