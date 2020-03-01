@@ -12,6 +12,8 @@ namespace SeminarskiRad.Models.ViewModels
         public int IdSeminar { get; set; }
         public string NazivSeminara { get; set; }
         public int IdPredbiljezba { get; set; }
+
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime DatumUpisa { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
@@ -21,6 +23,5 @@ namespace SeminarskiRad.Models.ViewModels
 
         [Display(Name = "Status Prijave")]
         public Status StatusPrijave { get; set; }
-        // public DateTime Datum { get; internal set; }
     }
 }

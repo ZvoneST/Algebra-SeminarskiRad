@@ -28,7 +28,7 @@ namespace SeminarskiRad.Models
         public DateTime Datum { get; set; }
 
         [Required(ErrorMessage = "Unos broja polaznika je obavezan!")]
-        [Display(Name = "Broj polaznika")]
+        [Display(Name = "Broj slobodnih mjesta")]
         public int BrojPolaznika { get; set; }
 
         [Display(Name = "Popunjen")]

@@ -14,7 +14,7 @@ namespace SeminarskiRad.Models
         public int IdPredbiljezba { get; set; }
 
         [Display(Name = "Datum prijave")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime Datum { get; set; }
 
         [Required(ErrorMessage = "Obavezan unos imena")]
