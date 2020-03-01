@@ -18,6 +18,7 @@ namespace SeminarskiRad.Controllers
         
         // GET Početna - Ponuda seminara
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Index(string opcija, string pretraga, int? pageNumber)
         {
             if (opcija == "Naziv")
@@ -48,6 +49,7 @@ namespace SeminarskiRad.Controllers
 
         // GET Upis polanika
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult UpisPolaznika(int? id)
         {
             if (id == null)
@@ -75,6 +77,7 @@ namespace SeminarskiRad.Controllers
         //[HandleError]
         [HttpPost, ActionName("UpisPolaznika")]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public ActionResult UpisPolaznikaPotvrda(UpisViewModel upis)
         {
             if (ModelState.IsValid)

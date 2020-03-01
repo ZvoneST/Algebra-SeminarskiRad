@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using System.Web.Mvc;
 
 namespace SeminarskiRad
@@ -8,6 +9,7 @@ namespace SeminarskiRad
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new AuthorizeAttribute()); // pri pokretanju aplikacije odmah nas baca na LogIn page
         }
     }
 }

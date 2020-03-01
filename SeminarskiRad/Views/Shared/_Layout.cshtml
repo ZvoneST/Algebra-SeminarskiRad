@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -9,7 +11,22 @@
 
 </head>
 <body>
-    @Html.Partial("_NavBar")
+    @if (Request.IsAuthenticated)
+    {
+        if (HttpContext.Current.User.IsInRole("Admin"))
+        {
+            @Html.Partial("_NavBar")
+        }
+        else
+        {
+            @Html.Partial("_NavBarUser")
+        }
+    }
+    else
+    {
+        @Html.Partial("_NavBarUser")
+    }
+
     <div class="container body-content">
         @RenderBody()
         <hr />
