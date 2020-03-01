@@ -25,7 +25,6 @@ namespace SeminarskiRad.Models
         [Required(ErrorMessage = "Unos datuma početka seminara je obavezan!")]
         [Display(Name = "Početak seminara")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
-        //[DataType(DataType.Date)]
         public DateTime Datum { get; set; }
 
         [Required(ErrorMessage = "Unos broja polaznika je obavezan!")]

@@ -14,7 +14,7 @@
 
     <div class="form-horizontal">
         <h3>@Convert.ToString(string.Format(Model.NazivSeminara))</h3>
-        <h4>Datum početka seminara: @Convert.ToString(string.Format("{0:dd-MM-yyyy}", Model.PocetakSeminara))</h4>
+        <h4>Datum početka seminara: @Convert.ToString(string.Format("{0:dd.MM.yyyy.}", Model.PocetakSeminara))</h4>
 
         @Html.HiddenFor(model => model.IdSeminar)
         

@@ -1,16 +1,14 @@
 ﻿@model IEnumerable<SeminarskiRad.Models.Predbiljezba>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Predbilježbe";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2 class="text-center">Predbilježbe polaznika</h2>
 <br />
-@*<hr />
-@Html.Partial("_PredbiljezbaSearch")
-<hr>*@
 
+<h3 class="text-center">Neobrađene predbilježbe</h3>
 <table class="table">
     <tr>
         <th>
@@ -40,7 +38,146 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.Where(n => n.StatusPrijave == SeminarskiRad.Models.Predbiljezba.Status.Neobrađena)) 
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seminar.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Datum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prezime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adresa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusPrijave)
+        </td>
+        <td>
+            @Html.ActionLink("Uredi", "Uredi", new { id=item.IdPredbiljezba }) |
+            @Html.ActionLink("Detalji", "Detalji", new { id=item.IdPredbiljezba }) |
+            @Html.ActionLink("Obriši", "Delete", new { id=item.IdPredbiljezba })
+        </td>
+    </tr>
+}
+
+</table>
+
+<hr />
+
+<h3 class="text-center">Prihvaćene predbilježbe</h3>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Seminar.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Datum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prezime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adresa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusPrijave)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Where(p => p.StatusPrijave == SeminarskiRad.Models.Predbiljezba.Status.Prihvaćena)) 
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seminar.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Datum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prezime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adresa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusPrijave)
+        </td>
+        <td>
+            @Html.ActionLink("Uredi", "Uredi", new { id=item.IdPredbiljezba }) |
+            @Html.ActionLink("Detalji", "Detalji", new { id=item.IdPredbiljezba }) |
+            @Html.ActionLink("Obriši", "Delete", new { id=item.IdPredbiljezba })
+        </td>
+    </tr>
+}
+
+</table>
+
+<hr />
+
+<h3 class="text-center">Odbijene predbilježbe</h3>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Seminar.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Datum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prezime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adresa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusPrijave)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Where(o => o.StatusPrijave == SeminarskiRad.Models.Predbiljezba.Status.Odbijena)) 
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Seminar.Naziv)
