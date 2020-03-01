@@ -337,6 +337,8 @@
     <Content Include="Views\Shared\_PonudaSearch.cshtml" />
     <Content Include="Views\Shared\_NavBarUser.cshtml" />
     <Content Include="Views\Shared\_PredbiljezbaSearch.cshtml" />
+    <Content Include="Views\Predbiljezba\EnrollComplete.cshtml" />
+    <Content Include="Views\Shared\_LoginPartialUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

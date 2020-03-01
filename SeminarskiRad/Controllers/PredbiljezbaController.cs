@@ -17,6 +17,7 @@ namespace SeminarskiRad.Controllers
 
         
         // GET Početna - Ponuda seminara
+        [HandleError]
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Index(string opcija, string pretraga, int? pageNumber)
@@ -48,6 +49,7 @@ namespace SeminarskiRad.Controllers
         }
 
         // GET Upis polanika
+        [HandleError]
         [HttpGet]
         [AllowAnonymous]
         public ActionResult UpisPolaznika(int? id)
@@ -74,7 +76,7 @@ namespace SeminarskiRad.Controllers
         }
 
         //POST Upis polaznika
-        //[HandleError]
+        [HandleError]
         [HttpPost, ActionName("UpisPolaznika")]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
@@ -97,7 +99,7 @@ namespace SeminarskiRad.Controllers
                 _db.Predbiljezba.Add(upisPolaznika);
                 _db.SaveChanges();
 
-                return RedirectToAction(nameof(Index));
+                return View("EnrollComplete");
 
             }
 
@@ -138,7 +140,6 @@ namespace SeminarskiRad.Controllers
         }
 
         // POST Spremanje izmijenjene predbilježbe
-        //[HandleError]
         [HttpPost, ActionName("Uredi")]
         [ValidateAntiForgeryToken]
         public ActionResult SpremiUredeno(UpisEdit upisModel)
@@ -218,7 +219,6 @@ namespace SeminarskiRad.Controllers
         }
 
         // POST brisanje predbilježbe
-        //[HandleError]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -43,7 +43,6 @@ namespace SeminarskiRad.Controllers
         }
 
         // POST: Seminar/Create
-        //[HandleError]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Seminar seminar)
@@ -80,7 +79,6 @@ namespace SeminarskiRad.Controllers
         }
 
         // POST: Seminar/Edit/5
-        //[HandleError]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Seminar seminar)
@@ -135,7 +133,6 @@ namespace SeminarskiRad.Controllers
         }
 
         // POST: Seminar/Delete/5
-        //[HandleError]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
