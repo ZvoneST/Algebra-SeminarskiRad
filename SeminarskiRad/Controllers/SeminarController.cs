@@ -6,6 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Data;
+using System.Data.SqlClient;
+using System.Text;
 using SeminarskiRad.Models.ViewModels;
 using PagedList;
 
@@ -17,40 +20,44 @@ namespace SeminarskiRad.Controllers
 
         // GET: Seminar/Index
         [HttpGet]
-        public ActionResult Index(string opcija, string pretraga)
+        public ActionResult Index(/*string opcija, string pretraga*/)
         {
-            var zauzetaMjesta = (from pred in _db.Predbiljezba
-                                join sem in _db.Seminar
-                                on pred.IdSeminar equals sem.IdSeminar
-                                select pred.IdPredbiljezba).Count();
-            
-            IQueryable<SeminarViewModel> seminarView = from seminar in _db.Seminar
-                                                       join predbiljezba in _db.Predbiljezba
-                                                       on seminar.IdSeminar equals predbiljezba.IdSeminar
-                                                       select new SeminarViewModel()
-                                                       {
-                                                           IdSeminar = seminar.IdSeminar,
-                                                           IdPredbiljezba = predbiljezba.IdPredbiljezba,
-                                                           NazivSeminara = seminar.Naziv,
-                                                           OpisSeminara = seminar.Opis,
-                                                           DatumSeminara = seminar.Datum,
-                                                           BrMjesta = seminar.BrojPolaznika,
-                                                           PreostalaMjesta = seminar.BrojPolaznika - zauzetaMjesta,
-                                                           Popunjen = seminar.Popunjen
-                                                       };
+            var seminarView = (from seminar in _db.Seminar
+                               join predbiljezba in _db.Predbiljezba
+                               on seminar.IdSeminar equals predbiljezba.IdSeminar
+                               group seminar by predbiljezba into g
+                               select new SeminarViewModel()
+                               {
+                                   IdSeminar = g.Key.IdSeminar,
+                                   IdPredbiljezba = g.Key.IdPredbiljezba,
+                                   NazivSeminara = g.Key.Seminar.Naziv,
+                                   OpisSeminara = g.Key.Seminar.Opis,
+                                   DatumSeminara = g.Key.Seminar.Datum,
+                                   BrojPolaznika = g.Key.Seminar.BrojPolaznika,
+                                   ZauzetaMjesta = g.Count(x => x.IdSeminar == x.IdSeminar),
+                                   Popunjen = g.Key.Seminar.Popunjen
+                               }).GroupBy(x => x.IdSeminar +
+                                               x.NazivSeminara +
+                                               x.OpisSeminara +
+                                               x.DatumSeminara +
+                                               x.BrojPolaznika +
+                                               x.ZauzetaMjesta);
 
-            if (opcija == "Naziv")
-            {
-                return View(seminarView.Where(n => n.NazivSeminara.Contains(pretraga) || pretraga == null).ToList());
-            }
-            else if (opcija == "Opis")
-            {
-                return View(seminarView.Where(o => o.OpisSeminara.Contains(pretraga) || pretraga == null).ToList());
-            }
-            else
-            {
-                return View(seminarView.ToList());
-            }
+            //if (opcija == "Naziv")
+            //{
+            //    return View(_db.Seminar.Where(n => n.Naziv.Contains(pretraga) || pretraga == null).ToList());
+            //}
+            //else if (opcija == "Opis")
+            //{
+            //    return View(_db.Seminar.Where(o => o.Opis.Contains(pretraga) || pretraga == null).ToList());
+            //}
+            //else
+            //{
+            //    return View(_db.Seminar.ToList());
+            //}
+
+            return View(seminarView);
+
         }
 
 

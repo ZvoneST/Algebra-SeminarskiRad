@@ -20,10 +20,10 @@ namespace SeminarskiRad.Models.ViewModels
         public DateTime DatumSeminara { get; set; }
 
         [Display(Name = "Broj polaznika")]
-        public int BrMjesta { get; set; }
+        public int BrojPolaznika { get; set; }
 
-        [Display(Name = "Broj slobodnih mjesta")]
-        public int PreostalaMjesta { get; set; }
+        [Display(Name = "Broj upisanih polaznika")]
+        public int ZauzetaMjesta { get; set; }
 
         [Display(Name = "Popunjen")]
         public bool Popunjen { get; set; }
