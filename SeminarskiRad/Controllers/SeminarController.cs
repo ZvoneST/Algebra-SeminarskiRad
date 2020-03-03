@@ -17,21 +17,40 @@ namespace SeminarskiRad.Controllers
 
         // GET: Seminar/Index
         [HttpGet]
-        public ActionResult Index(string opcija, string pretraga, int? pageNumber)
+        public ActionResult Index(string opcija, string pretraga)
         {
+            var zauzetaMjesta = (from pred in _db.Predbiljezba
+                                join sem in _db.Seminar
+                                on pred.IdSeminar equals sem.IdSeminar
+                                select pred.IdPredbiljezba).Count();
+            
+            IQueryable<SeminarViewModel> seminarView = from seminar in _db.Seminar
+                                                       join predbiljezba in _db.Predbiljezba
+                                                       on seminar.IdSeminar equals predbiljezba.IdSeminar
+                                                       select new SeminarViewModel()
+                                                       {
+                                                           IdSeminar = seminar.IdSeminar,
+                                                           IdPredbiljezba = predbiljezba.IdPredbiljezba,
+                                                           NazivSeminara = seminar.Naziv,
+                                                           OpisSeminara = seminar.Opis,
+                                                           DatumSeminara = seminar.Datum,
+                                                           BrMjesta = seminar.BrojPolaznika,
+                                                           PreostalaMjesta = seminar.BrojPolaznika - zauzetaMjesta,
+                                                           Popunjen = seminar.Popunjen
+                                                       };
+
             if (opcija == "Naziv")
             {
-                return View(_db.Seminar.Where(n => n.Naziv.Contains(pretraga) || pretraga == null).ToList().ToPagedList(pageNumber ?? 1, 3));
+                return View(seminarView.Where(n => n.NazivSeminara.Contains(pretraga) || pretraga == null).ToList());
             }
             else if (opcija == "Opis")
             {
-                return View(_db.Seminar.Where(o => o.Opis.Contains(pretraga) || pretraga == null).ToList().ToPagedList(pageNumber ?? 1, 3));
+                return View(seminarView.Where(o => o.OpisSeminara.Contains(pretraga) || pretraga == null).ToList());
             }
             else
             {
-                return View(_db.Seminar.ToList().ToPagedList(pageNumber ?? 1, 3));
+                return View(seminarView.ToList());
             }
-
         }
 
 

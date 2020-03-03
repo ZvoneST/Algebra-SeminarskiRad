@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -33,5 +34,6 @@ namespace SeminarskiRad.Models
 
         [Display(Name = "Popunjen")]
         public bool Popunjen { get; set; }
+        public DbSet<Seminar> Seminari { get; internal set; }
     }
 }

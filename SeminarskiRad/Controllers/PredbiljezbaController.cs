@@ -22,6 +22,8 @@ namespace SeminarskiRad.Controllers
         [AllowAnonymous]
         public ActionResult Index(string opcija, string pretraga, int? pageNumber)
         {
+            // search functionality implementation https://www.c-sharpcorner.com/UploadFile/219d4d/implement-search-paging-and-sort-in-mvc-5/
+
             if (opcija == "Naziv")
             {
                 return View(_db.Seminar.Where(n => n.Naziv.Contains(pretraga) || pretraga == null).ToList().ToPagedList(pageNumber ?? 1, 4));
@@ -48,7 +50,7 @@ namespace SeminarskiRad.Controllers
             return View(_db.Predbiljezba.Include(s => s.Seminar).Where(i => i.Ime.Contains(pretraga) || i.Prezime.Contains(pretraga) || pretraga == null).ToList());
         }
 
-        // GET Upis polanika
+        // GET Upis polanzika
         [HandleError]
         [HttpGet]
         [AllowAnonymous]

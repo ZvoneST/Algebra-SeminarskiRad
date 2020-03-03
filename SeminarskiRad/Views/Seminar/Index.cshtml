@@ -1,8 +1,4 @@
-﻿@model IPagedList<SeminarskiRad.Models.Seminar>
-
-@using PagedList;
-
-@using PagedList.Mvc;
+﻿@model IEnumerable<SeminarskiRad.Models.ViewModels.SeminarViewModel>
 
 @{
     ViewBag.Title = "Seminari";
@@ -12,30 +8,32 @@
 <h2 class="text-center">Seminari</h2>
 
 <table class="table">
-    @Html.PagedListPager(Model, pageNumber => Url.Action("Index", new { pageNumber, opcija = Request.QueryString["opcija"], pretraga = Request.QueryString["pretraga"] }))
 
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.First().Naziv)
+            @Html.DisplayNameFor(model => model.NazivSeminara)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().Opis)
+            @Html.DisplayNameFor(model => model.OpisSeminara)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().Datum)
+            @Html.DisplayNameFor(model => model.DatumSeminara)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().BrojPolaznika)
+            @Html.DisplayNameFor(model => model.BrMjesta)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().Popunjen)
+            @Html.DisplayNameFor(model => model.PreostalaMjesta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Popunjen)
         </th>
         <th></th>
     </tr>
     @if (Model.Count() == 0)
     {
         <tr>
-            <td colspan="5" class="text-center">
+            <td colspan="6" class="text-center">
                 <br />
                 <h3><b>Traženi unos nije pronađen</b></h3>
             </td>
@@ -47,16 +45,19 @@
         {
             <tr>
                 <td>
-                    <b>@Html.DisplayFor(modelItem => item.Naziv)</b>
+                    <b>@Html.DisplayFor(modelItem => item.NazivSeminara)</b>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Opis)
+                    @Html.DisplayFor(modelItem => item.OpisSeminara)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Datum)
+                    @Html.DisplayFor(modelItem => item.DatumSeminara)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.BrojPolaznika)
+                    @Html.DisplayFor(modelItem => item.BrMjesta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PreostalaMjesta)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Popunjen)
