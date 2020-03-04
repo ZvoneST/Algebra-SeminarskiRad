@@ -65,7 +65,7 @@
 
 </table>
 
-<div class="pagination" style="margin-left">
+<div class="pagination" style="margin-left:auto">
     @Html.PagedListPager(Model, pageNumber => Url.Action("Index", new { pageNumber, opcija = Request.QueryString["opcija"], pretraga = Request.QueryString["pretraga"] }))
 </div>
 
