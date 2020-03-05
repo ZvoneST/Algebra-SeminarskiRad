@@ -1,5 +1,5 @@
-﻿@*@model IEnumerable<SeminarskiRad.Models.ViewModels.SeminarViewModel>*@
-@model IEnumerable<SeminarskiRad.Models.Seminar>
+﻿@model IEnumerable<SeminarskiRad.Models.Seminar>
+
 
 @{
     ViewBag.Title = "Seminari";
@@ -16,25 +16,6 @@
 <table class="table">
 
     <tr>
-        @*<th>
-                @Html.DisplayNameFor(model => model.NazivSeminara)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OpisSeminara)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DatumSeminara)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BrojPolaznika)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ZauzetaMjesta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Popunjen)
-            </th>
-            <th></th>*@
         <th>
             @Html.DisplayNameFor(model => model.Naziv)
         </th>
@@ -50,6 +31,8 @@
         <th>
             @Html.DisplayNameFor(model => model.Popunjen)
         </th>
+        <th></th>
+        <th></th>
         <th></th>
     </tr>
     @if (Model.Count() == 0)
@@ -67,25 +50,7 @@
         {
             if (item.Popunjen == false)
             {
-               <tr>
-                @*<td>
-                        <b>@Html.DisplayFor(modelItem => item.NazivSeminara)</b>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OpisSeminara)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DatumSeminara)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BrojPolaznika)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ZauzetaMjesta)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Popunjen)
-                    </td>*@
+                <tr>
                     <td>
                         <b>@Html.DisplayFor(modelItem => item.Naziv)</b>
                     </td>
@@ -102,11 +67,15 @@
                         @Html.DisplayFor(modelItem => item.Popunjen)
                     </td>
                     <td>
-                        @Html.ActionLink("Uredi", "Edit", new { id = item.IdSeminar }) |
-                        @Html.ActionLink("Detalji", "Details", new { id = item.IdSeminar }) |
+                        @Html.ActionLink("Uredi", "Edit", new { id = item.IdSeminar })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Detalji", "Details", new { id = item.IdSeminar })
+                    </td>
+                    <td>
                         @Html.ActionLink("Obriši", "Delete", new { id = item.IdSeminar })
                     </td>
-               </tr>
+                </tr>
             }
 
         }
@@ -116,25 +85,6 @@
 <table class="table">
 
     <tr>
-        @*<th>
-                @Html.DisplayNameFor(model => model.NazivSeminara)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OpisSeminara)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DatumSeminara)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BrojPolaznika)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ZauzetaMjesta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Popunjen)
-            </th>
-            <th></th>*@
         <th>
             @Html.DisplayNameFor(model => model.Naziv)
         </th>
@@ -150,6 +100,8 @@
         <th>
             @Html.DisplayNameFor(model => model.Popunjen)
         </th>
+        <th></th>
+        <th></th>
         <th></th>
     </tr>
     @if (Model.Count() == 0)
@@ -167,25 +119,7 @@
         {
             if (item.Popunjen == true)
             {
-               <tr>
-                @*<td>
-                        <b>@Html.DisplayFor(modelItem => item.NazivSeminara)</b>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OpisSeminara)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DatumSeminara)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BrojPolaznika)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ZauzetaMjesta)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Popunjen)
-                    </td>*@
+                <tr>
                     <td>
                         <b>@Html.DisplayFor(modelItem => item.Naziv)</b>
                     </td>
@@ -202,11 +136,15 @@
                         @Html.DisplayFor(modelItem => item.Popunjen)
                     </td>
                     <td>
-                        @Html.ActionLink("Uredi", "Edit", new { id = item.IdSeminar }) |
-                        @Html.ActionLink("Detalji", "Details", new { id = item.IdSeminar }) |
+                        @Html.ActionLink("Uredi", "Edit", new { id = item.IdSeminar })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Detalji", "Details", new { id = item.IdSeminar })
+                    </td>
+                    <td>
                         @Html.ActionLink("Obriši", "Delete", new { id = item.IdSeminar })
                     </td>
-               </tr>
+                </tr>
             }
 
         }

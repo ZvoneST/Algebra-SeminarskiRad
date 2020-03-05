@@ -6,8 +6,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand">IT Učilište</a>
-            @*@Html.ActionLink("IT Akademija", "Index", "Predbiljezba", new { area = "" }, new { @class = "navbar-brand" })*@
+            <a class="navbar-brand">@Html.ActionLink("IT Učilište", "Index", "Predbiljezba", new { area = "" }, new { @class = "navbar-brand" })</a>
         </div>
         <div class="navbar-collapse collapse">
             @Html.Partial("_LoginPartialUser")

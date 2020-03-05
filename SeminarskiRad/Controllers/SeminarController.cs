@@ -22,27 +22,6 @@ namespace SeminarskiRad.Controllers
         [HttpGet]
         public ActionResult Index(string opcija, string pretraga)
         {
-            //var seminarView = (from seminar in _db.Seminar
-            //                   join predbiljezba in _db.Predbiljezba
-            //                   on seminar.IdSeminar equals predbiljezba.IdSeminar
-            //                   group seminar by predbiljezba into g
-            //                   select new SeminarViewModel()
-            //                   {
-            //                       IdSeminar = g.Key.IdSeminar,
-            //                       IdPredbiljezba = g.Key.IdPredbiljezba,
-            //                       NazivSeminara = g.Key.Seminar.Naziv,
-            //                       OpisSeminara = g.Key.Seminar.Opis,
-            //                       DatumSeminara = g.Key.Seminar.Datum,
-            //                       BrojPolaznika = g.Key.Seminar.BrojPolaznika,
-            //                       ZauzetaMjesta = g.Count(x => x.IdSeminar == x.IdSeminar),
-            //                       Popunjen = g.Key.Seminar.Popunjen
-            //                   }).GroupBy(x => x.IdSeminar +
-            //                                   x.NazivSeminara +
-            //                                   x.OpisSeminara +
-            //                                   x.DatumSeminara +
-            //                                   x.BrojPolaznika +
-            //                                   x.ZauzetaMjesta);
-
             if (opcija == "Naziv")
             {
                 return View(_db.Seminar.Where(n => n.Naziv.Contains(pretraga) || pretraga == null).ToList());
@@ -55,9 +34,6 @@ namespace SeminarskiRad.Controllers
             {
                 return View(_db.Seminar.ToList());
             }
-
-            //return View(seminarView.ToList());
-
         }
 
 

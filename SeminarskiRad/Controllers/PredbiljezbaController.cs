@@ -26,15 +26,15 @@ namespace SeminarskiRad.Controllers
 
             if (opcija == "Naziv")
             {
-                return View(_db.Seminar.Where(n => n.Naziv.Contains(pretraga) || pretraga == null).ToList().ToPagedList(pageNumber ?? 1, 4));
+                return View(_db.Seminar.Where(n => n.Naziv.Contains(pretraga) || pretraga == null).ToList().ToPagedList(pageNumber ?? 1, 5));
             }
             else if (opcija == "Opis")
             {
-                return View(_db.Seminar.Where(o => o.Opis.Contains(pretraga) || pretraga == null).ToList().ToPagedList(pageNumber ?? 1, 4));
+                return View(_db.Seminar.Where(o => o.Opis.Contains(pretraga) || pretraga == null).ToList().ToPagedList(pageNumber ?? 1, 5));
             }
             else
             {
-                return View(_db.Seminar.ToList().ToPagedList(pageNumber ?? 1, 4));
+                return View(_db.Seminar.ToList().ToPagedList(pageNumber ?? 1, 5));
             }
         }
         
@@ -47,7 +47,15 @@ namespace SeminarskiRad.Controllers
                 return View(_db.Predbiljezba.Include(s => s.Seminar).Where(n => n.Seminar.Naziv.Contains(pretraga) || pretraga == null).ToList());
 
             }
-            return View(_db.Predbiljezba.Include(s => s.Seminar).Where(i => i.Ime.Contains(pretraga) || i.Prezime.Contains(pretraga) || pretraga == null).ToList());
+            else if (opcija == "Ime" + "Prezime")
+            {
+                return View(_db.Predbiljezba.Include(s => s.Seminar).Where(i => i.Ime.Contains(pretraga) || i.Prezime.Contains(pretraga) || pretraga == null).ToList());
+
+            }
+            else
+            {
+                return View(_db.Predbiljezba.Include(s => s.Seminar).ToList());
+            }
         }
 
         // GET Upis polanzika
